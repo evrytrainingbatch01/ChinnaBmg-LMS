@@ -1,0 +1,48 @@
+
+<div class="row">
+   <div class="col-md-5">
+     <form [formGroup]="this.bookService.form" (ngSubmit)="onSubmit()"> 
+       <input type="hidden" formControlName="$key">
+       <div class="form-group">
+         <label>BookName</label>
+          <input formControlName="bookname" class="form-control" [ngClass]="{'is-inavlid':submitted && formControls.bookname.errors}">
+          <div class="invalid-feedback" *ngIf="submitted && formControls.bookname.errors">
+            The field is required.
+          </div>
+       </div>
+       <div class="form-group">
+          <label>Author</label>
+           <input formControlName="author" class="form-control" [ngClass]="{'is-inavlid':submitted && formControls.author.errors}">
+           <div class="invalid-feedback" *ngIf="submitted && formControls.author.errors">
+             Author is required.
+           </div>
+        </div>
+        <div class="form-group">
+            <label>Price</label>
+             <input formControlName="price" class="form-control" [ngClass]="{'is-inavlid':submitted && formControls.price.errors}">
+             <div class="invalid-feedback" *ngIf="submitted && formControls.price.errors">
+            Price is mandatory required.
+             </div>
+          </div>
+          <div class="form-group">
+              <label>Rating</label>
+               <input formControlName="rating" class="form-control" [ngClass]="{'is-inavlid':submitted && formControls.rating.errors}">
+               <div class="invalid-feedback" *ngIf="submitted && formControls.rating.errors">
+                 <label *ngIf="formControls.rating.errors.required">rating is required</label>
+                 <label *ngIf="formControls.rating.errors.minlength">here give rating out ot 10</label>
+               </div>
+            </div>
+            <div class="form-group">
+              
+                 <input type="submit" class="btn btn-primary" value="submit">
+              </div>
+     </form>
+     <div class="alret alret-info" *ngIf="showSuccessMessage">
+       Submitted sucessfully.
+     </div>
+   </div>
+      <div class="col-md-7">
+        <app-booklist></app-booklist>
+      </div>
+   
+</div>
